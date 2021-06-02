@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-jmail-dev-00012-authRole",
+      "UnauthRoleArn": "arn:aws:iam::629195515178:role/amplify-jmail-dev-00012-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::629195515178:role/amplify-jmail-dev-00012-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-jmail-dev-00012-deployment",
+      "UnauthRoleName": "amplify-jmail-dev-00012-unauthRole",
+      "StackName": "amplify-jmail-dev-00012",
+      "StackId": "arn:aws:cloudformation:us-west-2:629195515178:stack/amplify-jmail-dev-00012/2eb13150-c370-11eb-ac59-0a622c7a878f",
+      "AmplifyAppId": "d33ldk236t9jje"
+    },
+    "categories": {
+      "auth": {
+        "jmailc9deb540": {}
+      }
+    }
+  }
+}

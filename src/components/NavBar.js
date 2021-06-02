@@ -12,9 +12,16 @@ const NavBar = () => {
       <ul>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/compose'>Compose</Link></li>
-        {userData.user
-          ? <li><Link to='/logout'>Log Out</Link></li>
-          : <li><Link to='/login'>Log In</Link></li>}
+        {userData.user?.address
+          ? <>
+            <li>{userData.user.address}</li>
+            <li><Link to='/logout'>Log Out</Link></li>
+            </>
+          : <>
+            <li><Link to='/signup'>Sign Up</Link></li>
+            <li><Link to='/login'>Log In</Link></li>
+            </>
+        }
       </ul>
     </nav>
     </>

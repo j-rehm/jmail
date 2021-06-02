@@ -1,5 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Redirect } from "react-router-dom";
+import Auth from '@aws-amplify/auth';
 
 import UserContext from '../context/AppContext';
 
@@ -7,10 +8,13 @@ const LogOut = () => {
   const { setUserData } = useContext(UserContext);
 
   const logOut = () => {
-    setUserData({ user: null });
-    localStorage.removeItem('user');
+    try {
+      setUserData({ user: null });
+      localStorage.removeItem('user');
+      Auth.signOut();
+    } catch (e) {}
   }
-  useEffect(logOut);
+  logOut();
 
   return <Redirect to='/' />
 }

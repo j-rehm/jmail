@@ -25,7 +25,7 @@ const HomePage = () => {
       setEmailData({ emails });
     });
   }
-  useEffect(getEmails, [userData.user.id]);
+  useEffect(getEmails, [userData.user.address]);
 
   return (
     <>
