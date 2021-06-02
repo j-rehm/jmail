@@ -1,25 +1,20 @@
-import React, { Component } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import Axios from 'axios';
 
-export default class HomePage extends Component {
-  constructor (props) {
-    super(props);
+import UserContext from '../context/AppContext';
 
-    this.state = {
-      emails: []
-    }
-  }
+const HomePage = () => {
+  const { userData } = useContext(UserContext);
+  const [ emailData, setEmailData ] = useState({ emails: null });
 
-  componentDidMount () {
-    // console.log(this.props);
-    let uriAddress = encodeURIComponent(this.props.user.address);
-    fetch(`https://ayoocyry5i.execute-api.us-west-1.amazonaws.com/test/api/emails/${uriAddress}`)
-    .then(res => res.json())
-    .then(data => {
-      // console.log(data);
-      let emailsDOM = [];
-      for (let email of data) {
-        emailsDOM.push(
-          <div className='email-message' id={email.id} key={email.id}>
+  const getEmails = () => {
+    let uriAddress = encodeURIComponent(userData.user.address);
+    Axios.get(`https://ayoocyry5i.execute-api.us-west-1.amazonaws.com/test/api/emails/${uriAddress}`)
+    .then(res => {
+      let emails = [];
+      for (let email of res.data) {
+        emails.push(
+          <div className='email' key={email.id}>
             <h3>{email.subject}</h3>
             <p>To: {email.receiver_address}</p>
             <p>From: {email.sender_address}</p>
@@ -27,18 +22,17 @@ export default class HomePage extends Component {
           </div>
         );
       }
-      this.setState({
-        emails: emailsDOM
-      });
+      setEmailData({ emails });
     });
   }
+  useEffect(getEmails, [userData.user.id]);
 
-  render () {
-    return (
-      <>
-      <h1>Hello World!</h1>
-      {this.state.emails}
-      </>
-    );
-  }
+  return (
+    <>
+    <h1>Hello World!</h1>
+    {emailData.emails}
+    </>
+  );
 }
+
+export default HomePage;

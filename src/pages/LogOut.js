@@ -1,12 +1,18 @@
-import React, { Component } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Redirect } from "react-router-dom";
 
-export default class LogOut extends Component {
-  constructor (props) {
-    super(props);
-    this.props.setUser(null);
+import UserContext from '../context/AppContext';
+
+const LogOut = () => {
+  const { setUserData } = useContext(UserContext);
+
+  const logOut = () => {
+    setUserData({ user: null });
+    localStorage.removeItem('user');
   }
-  render () {
-    return ( <Redirect to="/" /> );
-  }
+  useEffect(logOut);
+
+  return <Redirect to='/' />
 }
+
+export default LogOut;

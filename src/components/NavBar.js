@@ -1,20 +1,24 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
-export default class NavBar extends Component {
-  render () {
-    return (
-      <>
-      <nav>
-        <ul>
-          <li><Link to='/'>Home</Link></li>
-          <li><Link to='/compose'>Compose</Link></li>
-          {this.props.auth
-            ? <li><Link to='/logout'>Log Out</Link></li>
-            : <li><Link to='/login'>Log In</Link></li>}
-        </ul>
-      </nav>
-      </>
-    );
-  }
+import UserContext from '../context/AppContext';
+
+const NavBar = () => {
+  const { userData } = useContext(UserContext);
+
+  return (
+    <>
+    <nav>
+      <ul>
+        <li><Link to='/'>Home</Link></li>
+        <li><Link to='/compose'>Compose</Link></li>
+        {userData.user
+          ? <li><Link to='/logout'>Log Out</Link></li>
+          : <li><Link to='/login'>Log In</Link></li>}
+      </ul>
+    </nav>
+    </>
+  );
 }
+
+export default NavBar;

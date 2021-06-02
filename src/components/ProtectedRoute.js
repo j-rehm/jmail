@@ -1,15 +1,19 @@
-// https://github.com/DeryGermann/Capstone/blob/main/Client/src/components/protected_route.js
-import React from 'react';
+import React, { useContext } from 'react';
 import { Route, Redirect } from "react-router-dom";
 
-const ProtectedRoute = ({ component: Component, auth, ...rest }) => {
-    return(
-        <Route {...rest} render={(props) => (
-            auth === true
-                ? <Component {...props} />
-                : <Redirect to='/login' />
-        )} />
-    )
+import UserContext from '../context/AppContext';
+
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  const { userData } = useContext(UserContext);
+
+  return(
+    <Route {...rest} render={(props) => (
+        userData.user
+          ? <Component {...props} />
+          : <Redirect to='/login' />
+      )}
+    />
+  );
 }
 
 export default ProtectedRoute;

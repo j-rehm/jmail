@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // import './App.css';
+
+import UserContext from './context/AppContext';
 
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/ProtectedRoute';
@@ -11,74 +13,40 @@ import LogIn from './pages/LogIn';
 import LogOut from './pages/LogOut';
 import PageNotFound from './pages/PageNotFound';
 
-export default class App extends Component {
-  constructor (props) {
-    super(props);
-    
-    this.state = {
-      auth: false,
-      user: null
-    }
-  }
-
-  setUser = value => {
-    this.setState({
-      auth: !!value,
-      user: value
-    });
-  }
+const App = () => {
+  const [ userData, setUserData ] = useState({ user: null });
   
-  render () {
-    return (
-      <>
-      <Router>
-        <NavBar
-          auth={this.state.auth}
-        />
+  useEffect(() => {
+    console.log(userData.user || 'No user data');
+    setUserData({ user: JSON.parse(localStorage.getItem('user')) });
+  }, [userData.user?.id]);
+  
+  return (
+    <>
+    <Router>
+      <UserContext.Provider value={{ userData, setUserData }}>
+        <NavBar />
         <Switch>
-          <ProtectedRoute
-            exact path='/'
-            auth={this.state.auth}
-            component={() =>
-              <HomePage
-                auth={this.state.auth}
-                user={this.state.user}
-              />
-            }
+          <ProtectedRoute exact path='/'
+            component={HomePage}
           />
-          <ProtectedRoute
-            path='/compose'
-            auth={this.state.auth}
-            component={() =>
-              <ComposeEmail
-                auth={this.state.auth}
-                user={this.state.user}
-              />
-            }
+          <ProtectedRoute path='/compose'
+            component={ComposeEmail}
           />
-          <Route
-            path='/login'
-            render={() =>
-              <LogIn
-                setUser={this.setUser}
-              />
-            }
-          />
-          <Route
-            path='/logout'
-            render={() =>
-              <LogOut
-                setUser={this.setUser}
-              />
-            }
-          />
-          <Route
-            path='*'
-            component={PageNotFound}
-          />
+          <Route path='/login'>
+            <LogIn />
+          </Route>
+          <Route path='/logout'>
+            <LogOut />
+          </Route>
+          <Route path='*'>
+            <PageNotFound />
+          </Route>
         </Switch>
-      </Router>
-      </>
-    );
-  }
+      </UserContext.Provider>
+    </Router>
+    </>
+  );
 }
+
+export default App;

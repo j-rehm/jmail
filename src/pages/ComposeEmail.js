@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-export default class ComposeEmail extends Component {
-  render () {
-    return (
-      <>
-      <h1>Compose Email</h1>
-      </>
-    );
-  }
+const ComposeEmail = () => {
+  return (
+    <>
+    <h1>Compose Email</h1>
+    </>
+  );
 }
+
+export default ComposeEmail;
