@@ -16,7 +16,7 @@ const LogOut = () => {
   }
   logOut();
 
-  return <Redirect to='/' />
+  return <Redirect to='login' />
 }
 
 export default LogOut;

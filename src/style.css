@@ -1,0 +1,278 @@
+* {
+  color: #333;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+}
+
+html {
+  background: #EEE;
+  overflow-y: hidden;
+}
+html,
+body,
+div#root {
+  height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6,
+nav.nav-bar {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+p, pre {
+  /* font-family: 'Rubik', sans-serif; */
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar:hover {
+  cursor: pointer;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 3px #CCC;
+  border: solid 3px transparent;
+}
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: inset 0 0 0 3px #333;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+div#root > .page-container {
+  overflow-y: hidden;
+  height: calc(100vh - 50px);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+  border: 0;
+  background: white;
+  font-weight: bold;
+}
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover {
+  cursor: pointer;
+  background: #0B0;
+  color: white;
+}
+form button,
+form input[type="button"],
+form input[type="submit"] {
+  background: #0B0;
+}
+form button:hover,
+form input[type="button"]:hover,
+form input[type="submit"]:hover {
+  color: #333;
+  background: #0A0;
+}
+
+.card,
+button,
+input[type="button"],
+input[type="submit"] {
+  background: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  box-shadow: 1px 3px 5px 1px rgba(202,202,202,0.75);
+}
+.card h1,
+.card h2,
+.card h3,
+.card h4,
+.card h5,
+.card h6,
+.card p,
+.card pre {
+  margin: 0;
+}
+
+form {
+  background: white;
+}
+form input,
+textarea {
+  border: 0;
+  background-color: #F5F5F5;
+  padding: 10px;
+  border-bottom: #0B0 solid 2px;
+  border-radius: 5px 5px 0 0;
+}
+form input:focus,
+textarea:focus {
+  outline: none;
+}
+
+/* NavBar */
+nav.nav-bar {
+  background: #0B0;
+  overflow: hidden;
+  position: sticky;
+  width: 100%;
+  height: 50px;
+  font-weight: bold;
+}
+nav.nav-bar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  overflow: inherit;
+  height: 100%;
+}
+nav.nav-bar ul span.nav-splitter {
+  width: 100%;
+}
+nav.nav-bar .nav-brand {
+  font-family: 'Odibee Sans', sans-serif;
+  font-size: x-large;
+  letter-spacing: 2px;
+}
+nav.nav-bar ul li > * {
+  padding: 0 10px;
+  display: block;
+  margin: 0;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  height: 100%;
+  line-height: 50px;
+}
+nav.nav-bar ul li > a:hover {
+  background-color: #0A0;
+}
+nav.nav-bar ul li > :not(a) {
+  cursor: default;
+}
+
+/* EmailInbox */
+.email-controls {
+  margin: 10px 0;
+  padding-left: 14px;
+}
+.email-controls button {
+  margin-right: 10px;
+}
+
+.email-interface {
+  height: calc(100vh - 105px);
+  padding-left: 14px;
+}
+
+.email-list {
+  width: 30%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.email-preview {
+  width: calc(100% - 34px);
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.email-preview .message-subject {
+  line-height: 1.4em;
+}
+.email-preview .message-sender {
+  font-weight: 500;
+}
+.email-preview .message-body {
+  line-height: 1.35em;
+  height: 2.7em;
+  overflow: hidden;
+}
+
+.email-viewport {
+  width: 70%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.email-viewport .email,
+.email-viewport .compose-form {
+  padding: 20px;
+  margin: 0 4px 10px 4px;
+  min-height: calc(100% - 50px);
+}
+.email .message-subject {
+  margin-top: -5px;
+  margin-bottom: 5px;
+}
+.email .message-receiver,
+.email .message-sender {
+  font-weight: 500;
+}
+.email .message-body {
+  margin-top: 10px;
+  background: #F5F5F5;
+  border-radius: 10px;
+  padding: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.compose-form {
+  text-align: center;
+}
+.compose-form .message-subject,
+.compose-form .message-receiver,
+.compose-form .message-body {
+  margin-bottom: 10px;
+  width: calc(100% - 20px);
+}
+.compose-form .message-body {
+  resize: vertical;
+  height: 500px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* LogIn / SignUp */
+.auth-form {
+  margin: 0 auto;
+  margin-top: 40px;
+  width: 400px;
+  text-align: center;
+}
+.auth-form .form-header,
+.auth-form .form-input-field,
+.auth-form .form-text,
+.auth-form .form-error {
+  margin-bottom: 10px;
+  width: 100%;
+}
+.auth-form .form-input-field {
+  width: calc(100% - 20px);
+}
+.auth-form .form-text {
+  margin-bottom: -5px;
+}
+.auth-form .form-text a {
+  color: #0B0;
+}
+.auth-form .form-text a:hover {
+  color: #090;
+}
+.auth-form .form-submit-btn {
+  margin-bottom: 10px;
+}
+.auth-form .form-error {
+  color: red;
+}

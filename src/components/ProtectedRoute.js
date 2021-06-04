@@ -10,7 +10,7 @@ const ProtectedRoute = ({ component: Component, ...rest }) => {
     <Route {...rest} render={(props) => (
         userData.user?.address
           ? <Component {...props} />
-          : <Redirect to='/login' />
+          : <Redirect to='login' />
       )}
     />
   );

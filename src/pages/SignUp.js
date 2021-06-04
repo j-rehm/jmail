@@ -47,73 +47,65 @@ const SignUp = () => {
   if (redirect) return <Redirect to='/login' />;
   else {
     return (
-      <form className="auth-form"
+      <form className="auth-form card"
             onSubmit={submitSignUpForm}>
         <h2 className="form-header">Sign Up</h2>
   
-        <label className="form-input-label"
-               htmlFor="first-name">First Name</label>
         <input className="form-input-field"
                value={firstName}
-               id="first-name"
+               placeholder="First Name"
                required
                onChange={(e) => setFirstName(e.target.value)}
         />
         <br />
   
-        <label className="form-input-label"
-               htmlFor="last-name">Last Name</label>
         <input className="form-input-field"
                value={lastName}
-               id="last-name"
+               placeholder="Last Name"
                required
                onChange={(e) => setLastName(e.target.value)}
         />
         <br />
   
-        <label className="form-input-label"
-               htmlFor="username">Username</label>
         <input className="form-input-field"
                value={username}
-               id="username"
+               placeholder="Username"
                required
                onChange={(e) => setUsername(e.target.value)}
         />
         <br />
   
-        <label className="form-input-label"
-               htmlFor="password">Password</label>
+        {/* <label className="form-input-label"
+               htmlFor="password">Password</label> */}
         <input className="form-input-field"
                value={password}
+               placeholder="Password"
                type="password"
-               id="password"
                required
                onChange={(e) => setPassword(e.target.value)}
         />
         <br />
   
-        <label className="form-input-label"
-               htmlFor="confirm">Confirm</label>
         <input className="form-input-field"
                value={confirm}
+               placeholder="Confirm Password"
                type="password"
-               id="confirm"
                required
                onChange={(e) => setConfirm(e.target.value)}
         />
         <br />
   
-        <span className="form-text">Already have an account? <Link to="/login">Log in</Link></span>
+        <p className="form-text">Already have an account? <Link to="login">Log in</Link></p>
         <br />
   
         <input className="form-submit-btn"
                type="submit"
-               name="Sign Up"
+               value="Sign Up"
         />
         <br />
   
         {error
-          ? <span className="form-error">{error}</span>
+          ? <p className="form-error">{error}</p>
           : <></>
         }
       </form>

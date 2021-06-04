@@ -30,6 +30,9 @@ const LogIn = () => {
       localStorage.setItem('user', JSON.stringify(user));
     } catch (err) {
       switch (err.code) {
+        case 'UserNotConfirmedException':
+          setError('User has not been confirmed');
+          break;
         case 'UserNotFoundException':
         case 'NotAuthorizedException':
           setError('Incorrect username or password');
@@ -40,45 +43,41 @@ const LogIn = () => {
     }
   }
 
-  if (userData.user?.address) return <Redirect to="/" />;
+  if (userData.user?.address) return <Redirect to="/inbox" />;
   else {
     return (
-      <form className="auth-form"
+      <form className="auth-form card"
             onSubmit={submitLogInForm}>
         <h2 className="form-header">Log In</h2>
   
-        <label className="form-input-label"
-               htmlFor="username">Username</label>
         <input className="form-input-field"
                value={username}
-               id="username"
+               placeholder="Username"
                required
                onChange={(e) => setUsername(e.target.value)}
         />
         <br />
   
-        <label className="form-input-label"
-               htmlFor="username">Password</label>
         <input className="form-input-field"
                value={password}
+               placeholder="Password"
                type="password"
-               id="password"
                required
                onChange={(e) => setPassword(e.target.value)}
         />
         <br />
   
-        <span className="form-text">Need an account? <Link to="/signup">Sign Up</Link></span>
+        <p className="form-text">Need an account? <Link to="signup">Sign Up</Link></p>
         <br />
 
         <input className="form-submit-btn"
                type="submit"
-               name="Log In"
+               value="Log In"
         />
         <br />
   
         {error
-          ? <span className="form-error">{error}</span>
+          ? <p className="form-error">{error}</p>
           : <></>
         }
       </form>
