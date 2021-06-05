@@ -38,28 +38,25 @@ const ComposeEmail = props => {
             onSubmit={submitComposeForm}>
         {/* <h2 className="form-header">New Message</h2> */}
 
-        <input className="form-input"
+        <input className="form-input message-subject"
                placeholder="Message Subject"
                value={messageSubject}
-               className="message-subject"
                required
                onChange={(e) => setMessageSubject(e.target.value)}
         />
         <br />
 
-        <input className="form-input-label"
+        <input className="form-input-label message-receiver"
                placeholder="Receiver address"
                value={receiverAddress}
-               className="message-receiver"
                required
                onChange={(e) => setRecieverAddress(e.target.value)}
         />
         <br />
 
-        <textarea className="form-input"
+        <textarea className="form-input message-body"
                   placeholder="Message Body"
                   value={messageBody}
-                  className="message-body"
                   required
                   onChange={(e) => setMessageBody(e.target.value)}
         />

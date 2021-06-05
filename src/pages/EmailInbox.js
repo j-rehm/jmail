@@ -110,6 +110,7 @@ const EmailInbox = () => {
   return (
     <>
     <div className="email-controls">
+      <h3>Inbox</h3>
       <button onClick={composeNew}>Compose</button>
       <button onClick={getEmails}>Refresh</button>
       {displayEmail

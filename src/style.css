@@ -166,11 +166,17 @@ nav.nav-bar ul li > :not(a) {
 
 /* EmailInbox */
 .email-controls {
+  display: flex;
   margin: 10px 0;
   padding-left: 14px;
+  align-items: center;
 }
-.email-controls button {
+.email-controls > * {
+  margin: 0;
   margin-right: 10px;
+}
+.email-controls h3 {
+  margin-right: 20px;
 }
 
 .email-interface {
